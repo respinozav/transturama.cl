@@ -979,6 +979,12 @@ ul {
   gap: 1.75rem;
 }
 
+@media (min-width: 1025px) {
+  .services-grid > :last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
+}
+
 .service-card {
   background: #ffffff;
   border-radius: var(--radius-lg);
@@ -1535,6 +1541,8 @@ ul {
   font-size: 1.25rem;
   font-weight: 800;
   color: #ffffff;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .contact-detail-content a:hover {
@@ -2420,6 +2428,10 @@ html, body {
 
   .coverage-badges-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-detail-content a {
+    font-size: 1.05rem;
   }
 
   .form-footer {
