@@ -21,11 +21,13 @@ jobs:
           script_stop: true
           script: |
             echo ">> Verificando /var/www/transturama.cl..."
-            if [ ! -d "/var/www/transturama.cl" ]; then
-              echo ">> Directorio no existe. Clonando repositorio en /var/www/transturama.cl..."
+            if [ ! -d "/var/www/transturama.cl/.git" ]; then
+              echo ">> Repositorio Git no encontrado. Preparando directorio..."
+              sudo rm -rf /var/www/transturama.cl
               sudo git clone https://github.com/respinozav/transturama.cl.git /var/www/transturama.cl
               sudo chown -R $(whoami):$(whoami) /var/www/transturama.cl
             fi
             cd /var/www/transturama.cl
+            git pull origin main
             chmod +x deploy/deploy.sh
             ./deploy/deploy.sh
